@@ -15,6 +15,9 @@ plugins:
   - serverless-wsgi
   - serverless-python-requirements
 
+package:
+  individually: true
+
 functions:
   api:
     handler: wsgi_handler.handler
