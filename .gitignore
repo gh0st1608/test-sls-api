@@ -1,3 +1,7 @@
 infrastructure/chupetex
 infrastructure/chupetex.pem
-dev.tfvars
+terraform.tfvars
+infrastructure/terraform.tfstate
+infrastructure/terraform.tfstate.backup
+infrastructure/.terraform.lock.hcl
+infrastructure/.terraform/
