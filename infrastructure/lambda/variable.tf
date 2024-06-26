@@ -13,3 +13,6 @@ variable "apigat_execution_arn"{
 variable "access_point_arn" {
   type = string
 } 
+
+variable "efs_mount_target" {
+}

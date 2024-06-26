@@ -18,6 +18,7 @@ module "lambda" {
   seg_group_lambda_id = module.vpc.seg_group_lambda_id
   apigat_execution_arn = module.apigat.apigat_execution_arn
   access_point_arn = module.efs.access_point_arn
+  efs_mount_target = module.efs.efs_mount_target
 }
 
 module "vpc" {
