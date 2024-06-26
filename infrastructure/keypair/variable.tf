@@ -1,4 +1,4 @@
 variable "key_pair_name" {
   type = string
-  default  = "chupetex_aws4"
+  default  = "chupetex_6"
 }
