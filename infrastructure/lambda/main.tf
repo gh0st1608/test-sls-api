@@ -60,9 +60,12 @@ resource "aws_lambda_function" "lambda_function" {
   #source_code_hash        = filebase64sha256(data.archive_file.lambda.output_path)
   source_code_hash        = data.archive_file.lambda.output_base64sha256
   depends_on = [var.efs_mount_target]
-  
 
- file_system_config {
+  ephemeral_storage {
+    size = 2048 # Min 512 MB and the Max 10240 MB
+  }
+
+  file_system_config {
     arn = var.access_point_arn # EFS file system access point ARN
     local_mount_path = "/mnt/efs"  # Local mount path inside the lambda function. Must start with '/mnt/'.
   }
