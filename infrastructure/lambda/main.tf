@@ -61,6 +61,16 @@ resource "aws_lambda_function" "lambda_function" {
   source_code_hash        = data.archive_file.lambda.output_base64sha256
   depends_on = [var.efs_mount_target]
 
+  environment {
+    variables = {
+      DB_HOST = var.secret_host_lamba
+      DB_BD = var.secret_bd_lamba
+      DB_USER = var.secret_user_lamba
+      DB_PASS = var.secret_pass_lamba
+      OPENAI_API_KEY = var.open_ai_key
+    }
+  }
+
   ephemeral_storage {
     size = 2048 # Min 512 MB and the Max 10240 MB
   }

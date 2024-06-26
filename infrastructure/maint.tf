@@ -19,6 +19,11 @@ module "lambda" {
   apigat_execution_arn = module.apigat.apigat_execution_arn
   access_point_arn = module.efs.access_point_arn
   efs_mount_target = module.efs.efs_mount_target
+  secret_host_lamba = var.secret_host_lamba
+  secret_bd_lamba = var.secret_bd_lamba
+  secret_user_lamba = var.secret_user_lamba
+  secret_pass_lamba = var.secret_pass_lamba
+  open_ai_key = var.open_ai_key
 }
 
 module "vpc" {
