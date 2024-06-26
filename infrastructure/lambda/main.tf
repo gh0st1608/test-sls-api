@@ -52,6 +52,7 @@ resource "aws_lambda_function" "lambda_function" {
   code_signing_config_arn = ""
   description             = ""
   #filename                = data.archive_file.lambda.output_path
+  timeout = 60
   filename                = "test.zip"
   function_name           = "similarity"
   role                    = aws_iam_role.iam_role.arn
@@ -63,10 +64,10 @@ resource "aws_lambda_function" "lambda_function" {
 
   environment {
     variables = {
-      DB_HOST = var.secret_host_lamba
-      DB_BD = var.secret_bd_lamba
-      DB_USER = var.secret_user_lamba
-      DB_PASS = var.secret_pass_lamba
+      DB_HOST = var.secret_host_lambda
+      DB_DATABASE = var.secret_bd_lambda
+      DB_USER = var.secret_user_lambda
+      DB_PASSWORD = var.secret_pass_lambda
       OPENAI_API_KEY = var.open_ai_key
     }
   }

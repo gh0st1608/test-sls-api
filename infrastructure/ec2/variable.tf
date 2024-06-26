@@ -10,10 +10,13 @@ variable "seg_group_lambda_id" {
   type = string
 }
 
-variable "subnet_private_id" {
+/* variable "subnet_private_id" {
+  type = string
+} */
+
+variable "subnet_public_id" {
   type = string
 }
-
 
 variable "key_name" {
   type = string

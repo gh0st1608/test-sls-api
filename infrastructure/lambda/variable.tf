@@ -6,6 +6,10 @@ variable "subnet_private_id" {
    type = string
 }
 
+variable "subnet_public_id" {
+   type = string
+}
+
 variable "apigat_execution_arn"{
    type = string
 }
@@ -17,19 +21,19 @@ variable "access_point_arn" {
 variable "efs_mount_target" {
 }
 
-variable "secret_host_lamba" {
+variable "secret_host_lambda" {
   type = string
 }
 
-variable "secret_bd_lamba" {
+variable "secret_bd_lambda" {
   type = string
 }
 
-variable "secret_user_lamba" {
+variable "secret_user_lambda" {
   type = string
 }
 
-variable "secret_pass_lamba" {
+variable "secret_pass_lambda" {
   type = string
 }
 

@@ -1,4 +1,4 @@
 variable "key_pair_name" {
   type = string
-  default = "chupetex"
+  default = "chupetex_2"
 }

@@ -10,19 +10,19 @@ variable "region" {
   type = string
 }
 
-variable "secret_host_lamba" {
+variable "secret_host_lambda" {
   type = string
 }
 
-variable "secret_bd_lamba" {
+variable "secret_bd_lambda" {
   type = string
 }
 
-variable "secret_user_lamba" {
+variable "secret_user_lambda" {
   type = string
 }
 
-variable "secret_pass_lamba" {
+variable "secret_pass_lambda" {
   type = string
 }
 
