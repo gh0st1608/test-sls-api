@@ -2,6 +2,8 @@ infrastructure/chupetex
 infrastructure/chupetex.pem
 infrastructure/deploy
 infrastructure/deploy.pem
+infrastructure/lambda.pem
+infrastructure/lambdapublic
 terraform.tfvars
 infrastructure/terraform.tfstate
 infrastructure/terraform.tfstate.backup
