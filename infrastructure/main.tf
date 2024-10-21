@@ -17,7 +17,7 @@ module "lambda" {
   subnet_private_id = module.vpc.subnet_private_id
   subnet_public_id = module.vpc.subnet_public_id
   seg_group_lambda_id = module.vpc.seg_group_lambda_id
-  apigat_execution_arn = module.apigat.apigat_execution_arn
+  #apigat_execution_arn = module.apigat.apigat_execution_arn
   access_point_arn = module.efs.access_point_arn
   efs_mount_target = module.efs.efs_mount_target
   secret_host_lambda = var.secret_host_lambda
@@ -47,5 +47,3 @@ module "ec2" {
   #subnet_private_id = module.vpc.subnet_private_id
   subnet_public_id = module.vpc.subnet_public_id
 }
-
-

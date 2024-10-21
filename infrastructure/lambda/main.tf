@@ -3,7 +3,7 @@
 data "archive_file" "lambda" {
   type        = "zip"
   source_file = "lambda_function.py"
-  output_path = "test.zip"
+  output_path = "lambda_function.zip"
 }
 
 data "aws_iam_policy_document" "AWSLambdaTrustPolicy" {
@@ -53,8 +53,8 @@ resource "aws_lambda_function" "lambda_function" {
   description             = ""
   #filename                = data.archive_file.lambda.output_path
   timeout = 60
-  filename                = "test.zip"
-  function_name           = "similarity"
+  filename                = "lambda_function.zip"
+  function_name           = "similarity_v1"
   role                    = aws_iam_role.iam_role.arn
   handler                 = "lambda_function.lambda_handler"
   runtime                 = "python3.8"
@@ -93,5 +93,5 @@ resource "aws_lambda_permission" "apigw_lambda" {
   function_name = aws_lambda_function.lambda_function.function_name
   principal = "apigateway.amazonaws.com"
 
-  source_arn = "${var.apigat_execution_arn}/*/*/*"
+  //source_arn = "${var.apigat_execution_arn}/*/*/*"
 }

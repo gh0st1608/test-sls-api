@@ -10,9 +10,9 @@ variable "subnet_public_id" {
    type = string
 }
 
-variable "apigat_execution_arn"{
+/* variable "apigat_execution_arn"{
    type = string
-}
+} */
 
 variable "access_point_arn" {
   type = string

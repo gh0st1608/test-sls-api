@@ -1,5 +1,5 @@
 resource "aws_api_gateway_rest_api" "api" {
-  name = "apigate_lambda"
+  name = "apigate_similarity"
   description = "My API Gateway"
 
   endpoint_configuration {

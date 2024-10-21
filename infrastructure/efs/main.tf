@@ -1,6 +1,6 @@
 resource "aws_efs_file_system" "efs" {
   tags = {
-    Name = "lambda-efs"
+    Name = "efs-similarity"
   }
   #availability_zone_name = "us-east-1e"
 }
@@ -46,18 +46,20 @@ resource "null_resource" "configure_nfs" {
   }
   provisioner "remote-exec" {
     inline = [
-      "sudo apt update -y",
+      "sudo apt-get update -y",
       "sudo apt install nfs-common -y",
-      "sudo apt install python3.8 -y",
+      "sudo apt install libpq-dev -y",
+      #"sudo apt install python3.8 -y",
       "sudo apt install python3-pip -y",
       "echo ${aws_efs_file_system.efs.dns_name}",
       "sudo mkdir -p efs",
-      "sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport ${aws_efs_file_system.efs.dns_name}:/ efs",
+      #"sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport ${aws_efs_file_system.efs.dns_name}:/ efs",
+      #"sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0da3e3f235315f978.efs.us-east-1.amazonaws.com:/ efs",
       "sudo chmod -R 777 /home/ubuntu/efs",
-      "echo 'Python version:'",
-      "python3 --version",
+      #"echo 'Python version:'",
+      #"python3 --version",
       "pip3 install testresources",
-      "pip3 install --upgrade --target /home/ubuntu/efs scikit-learn mysql-connector-python openai pandas requests pdfminer.six numpy"
+      #"pip3 install --upgrade --target /home/ubuntu/efs psycopg2-binary scikit-learn mysql-connector-python openai pandas requests pdfminer.six numpy"
     ]
   }
 }

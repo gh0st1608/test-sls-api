@@ -5,7 +5,7 @@ resource "aws_instance" "slsserver" {
   vpc_security_group_ids = [var.seg_group_lambda_id]
   key_name = var.key_name
   tags = {
-    Name = "server_sls"
+    Name = "ec2_similarity"
   }
 
 }
