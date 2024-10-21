@@ -2,7 +2,7 @@ resource "aws_vpc" "vpc" {
   cidr_block = "10.0.0.0/16"
   enable_dns_hostnames = true
   tags = {
-    Name = "lambda-vpc"
+    Name = "vpc-similarity"
   }
 }
 
@@ -12,7 +12,7 @@ resource "aws_subnet" "subnet_public" {
   cidr_block              = "10.0.0.0/21"
   map_public_ip_on_launch = true
   tags = {
-    Name = "lambda-subnet-public"
+    Name = "subnet-public-similarity"
   }
 }
 
@@ -20,7 +20,7 @@ resource "aws_internet_gateway" "internet_gateway" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "lambda-internet-gateway"
+    Name = "internet-gateway-similarity"
   }
 }
 
@@ -33,7 +33,7 @@ resource "aws_route_table" "route_table_public" {
   }
 
   tags = {
-    Name = "lambda-route-table-public"
+    Name = "route-table-public-similarity"
   }
 }
 
@@ -46,7 +46,7 @@ resource "aws_eip" "eip" {
   vpc        = true
   depends_on = [aws_internet_gateway.internet_gateway]
   tags = {
-    Name = "lambda-eip"
+    Name = "eip-similarity"
   }
 }
 
@@ -55,7 +55,7 @@ resource "aws_nat_gateway" "nat_gateway" {
   subnet_id     = aws_subnet.subnet_public.id
 
   tags = {
-    Name = "lambda-nat-gateway"
+    Name = "nat-gateway-similarity"
   }
 }
 
@@ -65,7 +65,7 @@ resource "aws_subnet" "subnet_private" {
   cidr_block              = "10.0.8.0/21"
   map_public_ip_on_launch = false
   tags = {
-    Name = "lambda-subnet-private"
+    Name = "subnet-private-similarity"
   }
 }
 
@@ -78,7 +78,7 @@ resource "aws_route_table" "route_table_private" {
   }
 
   tags = {
-    Name = "lambda-route-table-private"
+    Name = "route-table-private-similarity"
   }
 }
 
@@ -110,7 +110,7 @@ resource "aws_default_network_acl" "default_network_acl" {
   }
 
   tags = {
-    Name = "lambda-default-network-acl"
+    Name = "network-acl-similarity"
   }
 }
 
@@ -147,6 +147,6 @@ resource "aws_default_security_group" "default_security_group" {
   }
 
   tags = {
-    Name = "lambda-default-security-group"
+    Name = "sg-similarity"
   }
 }

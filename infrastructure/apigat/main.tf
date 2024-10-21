@@ -1,5 +1,5 @@
 resource "aws_api_gateway_rest_api" "api" {
-  name = "apigate_lambda"
+  name = "apigate_similarity"
   description = "My API Gateway"
 
   endpoint_configuration {
@@ -10,7 +10,7 @@ resource "aws_api_gateway_rest_api" "api" {
 resource "aws_api_gateway_resource" "root" {
   rest_api_id = aws_api_gateway_rest_api.api.id
   parent_id = aws_api_gateway_rest_api.api.root_resource_id
-  path_part = "mypath"
+  path_part = "similarity"
 }
 
 resource "aws_api_gateway_method" "proxy" {
@@ -69,5 +69,11 @@ resource "aws_api_gateway_deployment" "deployment" {
   ]
 
   rest_api_id = aws_api_gateway_rest_api.api.id
-  stage_name = "dev"
+  //stage_name = "dev"
+}
+
+resource "aws_api_gateway_stage" "example" {
+  deployment_id = aws_api_gateway_deployment.deployment.id
+  rest_api_id   = aws_api_gateway_rest_api.api.id
+  stage_name    = "dev"
 }

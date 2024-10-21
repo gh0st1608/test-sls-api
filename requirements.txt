@@ -6,3 +6,4 @@ openai==1.35.1
 pandas==2.2.2
 requests==2.32.3
 pdfminer.six==20231228
+psycopg2

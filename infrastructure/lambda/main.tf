@@ -3,7 +3,7 @@
 data "archive_file" "lambda" {
   type        = "zip"
   source_file = "lambda_function.py"
-  output_path = "test.zip"
+  output_path = "lambda_function.zip"
 }
 
 data "aws_iam_policy_document" "AWSLambdaTrustPolicy" {
@@ -52,8 +52,9 @@ resource "aws_lambda_function" "lambda_function" {
   code_signing_config_arn = ""
   description             = ""
   #filename                = data.archive_file.lambda.output_path
-  filename                = "test.zip"
-  function_name           = "similarity"
+  timeout = 60
+  filename                = "lambda_function.zip"
+  function_name           = "similarity_v1"
   role                    = aws_iam_role.iam_role.arn
   handler                 = "lambda_function.lambda_handler"
   runtime                 = "python3.8"
@@ -61,7 +62,21 @@ resource "aws_lambda_function" "lambda_function" {
   source_code_hash        = data.archive_file.lambda.output_base64sha256
   depends_on = [var.efs_mount_target]
 
- file_system_config {
+  environment {
+    variables = {
+      DB_HOST = var.secret_host_lambda
+      DB_DATABASE = var.secret_bd_lambda
+      DB_USER = var.secret_user_lambda
+      DB_PASSWORD = var.secret_pass_lambda
+      OPENAI_API_KEY = var.open_ai_key
+    }
+  }
+
+  ephemeral_storage {
+    size = 2048 # Min 512 MB and the Max 10240 MB
+  }
+
+  file_system_config {
     arn = var.access_point_arn # EFS file system access point ARN
     local_mount_path = "/mnt/efs"  # Local mount path inside the lambda function. Must start with '/mnt/'.
   }
@@ -78,5 +93,5 @@ resource "aws_lambda_permission" "apigw_lambda" {
   function_name = aws_lambda_function.lambda_function.function_name
   principal = "apigateway.amazonaws.com"
 
-  source_arn = "${var.apigat_execution_arn}/*/*/*"
+  //source_arn = "${var.apigat_execution_arn}/*/*/*"
 }
