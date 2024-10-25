@@ -15,8 +15,14 @@ Pares de claves (privada y publica) que permite crear el recurso EC2 y conectar 
 ## Virtual Private Cloud
 Estructura de red virtual que usa la infraestructura, se conforma por una subred publica y una subred privada, adicionalmente se configuro un internet gateway y un nat gateway respecticamente, para cada uno de ellos.
 
+- Subnet Publica: Tiene como finalidad dar salida a internet a la instancia EC2 para la instalacion de librerias por consola web.
+- Subred Privada: Tiene como finalidad rutear la solicitud al nat gateway.
+- Internet Gateway: Tiene como finalidad conectar el servicio al api gateway.
+- Nat Gateway: Tiene ocmo finalidad rutear la solicitud del lambda function a la subred publica y viceversa.
+
 ## Api Gateway
 Servicio que sirve de gestor de apis y funciona como proxy inverso para las aplicaciones, para este caso el lambda function conectara su funcion con un servicio de este.
+
 
 > **Recursos adicionales**
 ## Llaves
