@@ -1,4 +1,4 @@
-> **Resumen servicios AWS**
+> **RESUMEN SERVICIOS AWS**
 
 ## EC2
 Servidor virtual que permitira la instalacion de las librerias adicionales que requiera el lambda function.
