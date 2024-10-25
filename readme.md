@@ -37,11 +37,11 @@ Servicio que sirve de gestor de apis y funciona como proxy inverso para las apli
 - Archivo donde se almacenara todas las variables de entorno necesarias que requiera la funcion lambda.
 
 -----------------------------------------------------------------------------------
-> **Requerimientos**:
+> **Requerimientos**
  - Instalar AWS Cli v2.15.48 y Python/3.11.8
  - Instalar Terraform v1.9.0
 
- ## Configuracion AWS
+>  **Configuracion AWS**
 1. Ejecutar `aws configure --profile NOMBRE_DEL_PERFIL` donde "NOMBRE_DEL_PERFIL" es el perfil de despliegue con localstack.
 2. Ingresar las credenciales respectivas : 
     - access_key
@@ -49,7 +49,7 @@ Servicio que sirve de gestor de apis y funciona como proxy inverso para las apli
     - region
     - ouput format
 
-## Pasos para construccion de la infrastructura: 
+>  **Pasos para construccion de la infrastructura** 
 1. Ubicarse en la carpeta `infrastructure` y completar las variables con credenciales respectivas en el archivo terraform.tfvars
 2. Ejecutar `terraform init` y seguidamente `terraform apply -auto-approve`.
 
@@ -57,3 +57,11 @@ Servicio que sirve de gestor de apis y funciona como proxy inverso para las apli
 ## Diagrama de Arquitectura
 ![alt text](image.png)
 
+
+## Network
+Las subredes se dividen en redes /20. Las redes privadas de base de datos son para ejecutar bases de datos, mientras que las redes privadas privadas son para instancias de clúster que necesitan tener una IP fija y un balanceador de carga de aplicaciones interno. Las redes públicas ejecutan las otras instancias del clúster y el balanceador de carga de aplicaciones externo que recibe solicitudes de Cloudflare.
+
+## Firewall
+Las reglas del firewall se definen en el Grupo de Seguridad.
+
+![alt text](image-2.png)
