@@ -1,7 +1,3 @@
-/* module "security_group" {
-  source = "./sg"
-  vpc_id = module.vpc.vpc_id
-}*/
 module "apigat" {
   source = "./apigat"
   lambda_invoke_arn = module.lambda.lambda_invoke_arn
