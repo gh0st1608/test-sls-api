@@ -49,9 +49,11 @@ Servicio que sirve de gestor de apis y funciona como proxy inverso para las apli
     - region
     - ouput format
 
->  **Pasos para construccion de la infrastructura** 
-1. Ubicarse en la carpeta `infrastructure` y completar las variables con credenciales respectivas en el archivo terraform.tfvars
-2. Ejecutar `terraform init` y seguidamente `terraform apply -auto-approve`.
+>  **Pasos para construccion de la infrastructura**
+1. Actualizar la funcion lambda de nombre `lambda_function.py` segun sus necesidades y anotar las librerias en el archivo `requirements.txt` para llevar un historial de los mismos.
+2. Ubicarse en el modulo `efs` y ubicar el recurso `configure_nfs` luego agregar la libreria asociada a su cambio en la linea `pip3 install --upgrade --target /home/ubuntu/efs xxnueva_libreriaxx psycopg2-binary scikit-learn mysql-connector-python openai pandas requests pdfminer.six numpy"`
+2. Ubicarse en la carpeta `infrastructure` y completar las variables con credenciales respectivas en el archivo terraform.tfvars
+3. Ejecutar `terraform init` y seguidamente `terraform apply -auto-approve`.
 
 
 ## Diagrama de Arquitectura
