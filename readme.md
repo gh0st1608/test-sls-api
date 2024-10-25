@@ -59,7 +59,7 @@ Servicio que sirve de gestor de apis y funciona como proxy inverso para las apli
 
 
 ## Network
-Las subredes se dividen en redes /20. Las redes privadas de base de datos son para ejecutar bases de datos, mientras que las redes privadas privadas son para instancias de clúster que necesitan tener una IP fija y un balanceador de carga de aplicaciones interno. Las redes públicas ejecutan las otras instancias del clúster y el balanceador de carga de aplicaciones externo que recibe solicitudes de Cloudflare.
+Las subredes se dividen en redes /21. Las redes privadas privadas son para la funcion lambda que debe tener una IP fija. Las redes públicas ejecutan las otras instancias del clúster.
 
 ## Firewall
 Las reglas del firewall se definen en el Grupo de Seguridad.
