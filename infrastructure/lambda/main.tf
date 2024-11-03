@@ -54,7 +54,7 @@ resource "aws_lambda_function" "lambda_function" {
   #filename                = data.archive_file.lambda.output_path
   timeout = 60
   filename                = "lambda_function.zip"
-  function_name           = "similarity_v1"
+  function_name           = "similarity_v2"
   role                    = aws_iam_role.iam_role.arn
   handler                 = "lambda_function.lambda_handler"
   runtime                 = "python3.8"
