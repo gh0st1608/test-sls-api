@@ -26,6 +26,10 @@ variable "secret_pass_lambda" {
   type = string
 }
 
+variable "secret_port_lambda" {
+  type = number
+}
+
 variable "open_ai_key" {
   type = string
 }

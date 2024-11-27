@@ -55,6 +55,6 @@ resource "aws_security_group" "http_access" {
   }
 
   tags = {
-    Name = "gs_similarity"
+    Name = "gs_similarity_v2"
   }
 }

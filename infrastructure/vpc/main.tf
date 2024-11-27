@@ -2,17 +2,17 @@ resource "aws_vpc" "vpc" {
   cidr_block = "10.0.0.0/16"
   enable_dns_hostnames = true
   tags = {
-    Name = "vpc-similarity"
+    Name = "vpc-similarity_v2"
   }
 }
 
 resource "aws_subnet" "subnet_public" {
   vpc_id                  = aws_vpc.vpc.id
-  availability_zone       = "us-east-1e"
+  availability_zone       = "us-east-1a"
   cidr_block              = "10.0.0.0/21"
   map_public_ip_on_launch = true
   tags = {
-    Name = "subnet-public-similarity"
+    Name = "subnet-public-similarity_v2"
   }
 }
 
@@ -20,7 +20,7 @@ resource "aws_internet_gateway" "internet_gateway" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "internet-gateway-similarity"
+    Name = "internet-gateway-similarity_v2"
   }
 }
 
@@ -33,7 +33,7 @@ resource "aws_route_table" "route_table_public" {
   }
 
   tags = {
-    Name = "route-table-public-similarity"
+    Name = "route-table-public-similarity_v2"
   }
 }
 
@@ -46,7 +46,7 @@ resource "aws_eip" "eip" {
   vpc        = true
   depends_on = [aws_internet_gateway.internet_gateway]
   tags = {
-    Name = "eip-similarity"
+    Name = "eip-similarity_v2"
   }
 }
 
@@ -55,17 +55,17 @@ resource "aws_nat_gateway" "nat_gateway" {
   subnet_id     = aws_subnet.subnet_public.id
 
   tags = {
-    Name = "nat-gateway-similarity"
+    Name = "nat-gateway-similarity_v2"
   }
 }
 
 resource "aws_subnet" "subnet_private" {
   vpc_id                  = aws_vpc.vpc.id
-  availability_zone       = "us-east-1e"
+  availability_zone       = "us-east-1a"
   cidr_block              = "10.0.8.0/21"
   map_public_ip_on_launch = false
   tags = {
-    Name = "subnet-private-similarity"
+    Name = "subnet-private-similarity_v2"
   }
 }
 
@@ -78,7 +78,7 @@ resource "aws_route_table" "route_table_private" {
   }
 
   tags = {
-    Name = "route-table-private-similarity"
+    Name = "route-table-private-similarity_v2"
   }
 }
 
@@ -110,7 +110,7 @@ resource "aws_default_network_acl" "default_network_acl" {
   }
 
   tags = {
-    Name = "network-acl-similarity"
+    Name = "network-acl-similarity_v2"
   }
 }
 
@@ -147,6 +147,6 @@ resource "aws_default_security_group" "default_security_group" {
   }
 
   tags = {
-    Name = "sg-similarity"
+    Name = "sg-similarity_v2"
   }
 }

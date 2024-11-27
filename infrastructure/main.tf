@@ -20,6 +20,7 @@ module "lambda" {
   secret_bd_lambda = var.secret_bd_lambda
   secret_user_lambda = var.secret_user_lambda
   secret_pass_lambda = var.secret_pass_lambda
+  secret_port_lambda = var.secret_port_lambda
   open_ai_key = var.open_ai_key
 }
 

@@ -68,6 +68,7 @@ resource "aws_lambda_function" "lambda_function" {
       DB_DATABASE = var.secret_bd_lambda
       DB_USER = var.secret_user_lambda
       DB_PASSWORD = var.secret_pass_lambda
+      DB_PORT = var.secret_port_lambda
       OPENAI_API_KEY = var.open_ai_key
     }
   }
