@@ -55,6 +55,8 @@ Servicio que sirve de gestor de apis y funciona como proxy inverso para las apli
 2. Ubicarse en la carpeta `infrastructure` y completar las variables con credenciales respectivas en el archivo terraform.tfvars
 3. Ejecutar `terraform init` y seguidamente `terraform apply -auto-approve`.
 
+**Nota: Entrar a la instancia ec2 y dar permisos a la carpeta que sirve de montaje con el siguiente codigo: "sudo chmod -R 777 /home/ubuntu/efs" luego correr el paso 2, esto con la finalidad de instalar las librerias**
+
 
 ## Diagrama de Arquitectura
 ![alt text](image.png)
